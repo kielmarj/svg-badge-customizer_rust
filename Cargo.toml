@@ -1,0 +1,15 @@
+# File: Cargo.toml
+# Repo: <https://github.com/kielmarj/svg-badge-customizer_rust>
+# © 2024 Jessica Kielmar (GitHub: kielmarj), under The MIT License
+# Updated: 2024-10-24
+
+[package]
+name = "svg_badge_generator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+warp = "0.3"  # Web framework for handling HTTP requests
+tokio = { version = "1", features = ["full"] }  # Asynchronous runtime used with warp
+serde = { version = "1.0", features = ["derive"] }  # Serialization library to parse query parameters
+bytes = "1.0"  # Handle buffers with the Buf trait

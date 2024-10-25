@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Badge Generator</title>
+</head>
+<body>
+    <h1>SVG Badge Customizer</h1>
+    <form id="badgeForm">
+        <label for="text">Text:</label>
+        <input type="text" id="text" name="text" value="Hello World"><br><br>
+
+        <label for="start_color">Gradient Start Color:</label>
+        <input type="color" id="start_color" name="start_color" value="#ff0000"><br><br>
+
+        <label for="end_color">Gradient End Color:</label>
+        <input type="color" id="end_color" name="end_color" value="#00ff00"><br><br>
+
+        <label for="foreground_color">Text Color:</label>
+        <input type="color" id="foreground_color" name="foreground_color" value="#ffffff"><br><br>
+
+        <label for="icon_color">Icon Color:</label>
+        <input type="color" id="icon_color" name="icon_color" value="#ffff00"><br><br>
+
+        <label for="border_color">Border Color:</label>
+        <input type="color" id="border_color" name="border_color" value="#000000"><br><br>
+
+        <button type="button" onclick="generateBadge()">Generate Badge</button>
+    </form>
+
+    <h2>Preview:</h2>
+    <div id="badgePreview"></div>
+
+    <script>
+        function generateBadge() {
+            const text = document.getElementById('text').value;
+            const startColor = encodeURIComponent(document.getElementById('start_color').value);
+            const endColor = encodeURIComponent(document.getElementById('end_color').value);
+            const foregroundColor = encodeURIComponent(document.getElementById('foreground_color').value);
+            const iconColor = encodeURIComponent(document.getElementById('icon_color').value);
+            const borderColor = encodeURIComponent(document.getElementById('border_color').value);
+
+            const url = `http://localhost:3030/badge?text=${text}&start_color=${startColor}&end_color=${endColor}&foreground_color=${foregroundColor}&icon_color=${iconColor}&border_color=${borderColor}`;
+
+            document.getElementById('badgePreview').innerHTML = `<img src="${url}" alt="SVG Badge">`;
+        }
+    </script>
+</body>
+</html>
